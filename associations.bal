@@ -1,5 +1,3 @@
-// todo Should sub record itself be considered an association? If so how to declare struct datatype -> main.go
-// How to define composition
 
 // `User` belongs to `Company`, `CompanyID` is the foreign key
 type User1 record  {
@@ -19,6 +17,7 @@ type User1 record  {
 
 type Company record {
   @PrimaryKey
+  @AutoIncrement
   int id;
   string name;
 };

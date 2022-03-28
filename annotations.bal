@@ -1,6 +1,5 @@
 import ballerina/time;
 
-
 // Table Representation
 
 public type TableConfig record {|
@@ -128,7 +127,6 @@ type Student6 record {|
     time:Date dob;
 |};
 
-
 // Transient fields
 
 public annotation true Transient on record field;
@@ -146,15 +144,15 @@ type Student record {|
 // Associations
 
 public enum ReferenceOption {
-   NO_ACTION,
-   SET_NULL,
-   CASCADE,
-   DELETE
+    NO_ACTION,
+    SET_NULL,
+    CASCADE,
+    DELETE
 }
 
 public type ForeignKeyConfig record {|
-    string key?;        // Default value will be the `id` field
-    string reference?;  // 
+    string key?; // Default value will be the `id` field
+    string reference?; // 
     ReferenceOption onUpdate?; // GORM default behaviour is these constraints are not set. However when deleting one record, the association can be selected 
     ReferenceOption onDelete?;
     string many2many?;

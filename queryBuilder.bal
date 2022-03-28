@@ -41,7 +41,7 @@ public client class QueryBuilder {
     }
 
     isolated function load(typedesc<record {}>... associations) returns QueryBuilder {
-        
+        return self;
     }
     
 

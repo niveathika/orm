@@ -1,6 +1,6 @@
 
 // `User` belongs to `Company`, `CompanyID` is the foreign key
-type User1 record  {
+type UserA1 record  {
   *Table;
   string name;
   int companyID;
@@ -8,8 +8,8 @@ type User1 record  {
   @ForeignKey{
     key: "companyID",
     reference: "id",
-    onUpdate: "CACADE",
-    onDelete: "NO ACTION" // or SET NULL   
+    onUpdate: CASCADE,
+    onDelete: NO_ACTION // or SET NULL   
   }
   
   Company company;
@@ -30,15 +30,15 @@ type Company record {
 
 // Has one
 // `User` has one to `Creditcard`,
-type User2 record  {
+type UserA2 record  {
   *Table;
   string name;
 
   @ForeignKey{
     key: "userId",
     reference: "id",
-    onUpdate: "CACADE",
-    onDelete: "CASCADE" // or SET NULL   
+    onUpdate: CASCADE,
+    onDelete: CASCADE // or SET NULL   
   }
   CreditCard card;
 };
@@ -63,8 +63,8 @@ type User3 record  {
   @ForeignKey{
     key: "userId",
     reference: "id",
-    onUpdate: "CACADE",
-    onDelete: "CASCADE" // or SET NULL   
+    onUpdate: CASCADE,
+    onDelete: CASCADE // or SET NULL   
   }
   CreditCard[] card;
 };
@@ -83,8 +83,8 @@ type User4 record  {
   @ForeignKey{
         key: "name.lastName",
         reference: "id",
-        onUpdate: "CACADE",
-        onDelete: "NULL",  // Cascade for user_lang table
+        onUpdate: CASCADE,
+        onDelete: SET_NULL,  // Cascade for user_lang table
         many2many: "user_lang"
   }
   Language[] language;
@@ -96,8 +96,8 @@ type Language record {
     @ForeignKey{
         key: "userId",
         reference: "id",
-        onUpdate: "CACADE",
-        onDelete: "NULL", 
+        onUpdate: CASCADE,
+        onDelete: SET_NULL, 
         many2many: "user_lang"
     }
     User4[] user;

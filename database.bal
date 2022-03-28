@@ -1,5 +1,5 @@
 import ballerina/sql;
-import ballerina/jballerina.java;
+// import ballerina/jballerina.java;
 
 public client class Client {
 
@@ -35,23 +35,20 @@ public client class Client {
 
         }
 
-        remote isolated function query(typedesc<record {}> tableType = <>, record {}? condition = ()) returns stream<tableType, error?> = @java:Method {
-                'class: "",
-                name: ""
-            } external;
+        // remote isolated function query(typedesc<record {}> tableType = <>, record {}? condition = ()) returns stream<tableType, error?> = @java:Method {
+        //         'class: "",
+        //         name: ""
+        //     } external;
 
-        remote isolated function queryWithcondition( sql:ParameterizedQuery query, typedesc<record {}> tableType = <>) returns stream<tableType, error?> = @java:Method {
-                'class: "",
-                name: ""
-            } external;
+        // remote isolated function queryWithcondition( sql:ParameterizedQuery query, typedesc<record {}> tableType = <>) returns stream<tableType, error?> = @java:Method {
+        //         'class: "",
+        //         name: ""
+        //     } external;
 
-        remote isolated function queryWithBuilder(QueryBuilder query, typedesc<record {}> tableType = <>) returns stream<tableType, error?> = @java:Method {
-                'class: "",
-                name: ""
-            } external;
-
-
-
+        // remote isolated function queryWithBuilder(QueryBuilder query, typedesc<record {}> tableType = <>) returns stream<tableType, error?> = @java:Method {
+        //         'class: "",
+        //         name: ""
+        //     } external;
 
 
         remote isolated function count(typedesc<record {}> countTable) returns int|error? {

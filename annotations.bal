@@ -57,12 +57,12 @@ type User1 record {|
     time:Date dob;
 
     @Embed
-    Address home;
+    Address1 home;
     // Fields in table would correspond to home_number, home_street, home_city, and
     // home_zipcode
 
     @Embed
-    Address office;
+    Address1 office;
     // Fields in table would correspond to office_number, office_street, office_city, and 
     // office_zipcode
 
@@ -145,7 +145,7 @@ type Student record {|
 
 // Associations
 
-enum ReferenceOption {
+public enum ReferenceOption {
    NO_ACTION,
    SET_NULL,
    CASCADE,
@@ -163,7 +163,7 @@ public type ForeignKeyConfig record {|
 public annotation ForeignKeyConfig ForeignKey on record field;
 
 // TODO
-type Table1 record {|
+type Table record {|
     @PrimaryKey
     @Unique
     @AutoIncrement

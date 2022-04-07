@@ -1,7 +1,7 @@
 import ballerina/io;
 import ballerina/sql;
 
-public function main() returns error? {
+ public function main() returns error? {
     io:println("Hello, World!");
 
     User1 user = {
@@ -28,8 +28,16 @@ public function main() returns error? {
     QueryBuilder query = new ();
     query = query.'select("name", "age");
 
-    Client1 db = new ();
+    Client db = check new ();
     sql:ExecutionResult result = check db->insert(user);
+
+    User1 userqweqew = check db->getRecord(User1, {"age": 3});
+
+    Condition condition = {
+        "id":1,
+        "age": 3
+    };
+
 
     //stream<User1, error?> resultStream = db->query(condition = {id: 14});
 

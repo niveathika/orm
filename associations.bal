@@ -1,7 +1,10 @@
 
 // `User` belongs to `Company`, `CompanyID` is the foreign key
 type UserA1 record {
-    *Table;
+    @PrimaryKey
+    @AutoIncrement
+    int id = -1;
+    
     string name;
     int companyID;
 
@@ -28,7 +31,11 @@ type Company record {
 // Has one
 // `User` has one to `Creditcard`,
 type UserA2 record {
-    *Table;
+
+    @PrimaryKey
+    @AutoIncrement
+    int id = -1;
+
     string name;
 
     @ForeignKey {
@@ -53,7 +60,10 @@ type CreditCard record {
 // Has many
 // Similar to has one on constraints except it contains an array
 type User3 record {
-    *Table;
+    @PrimaryKey
+    @AutoIncrement
+    int id = -1;
+
     string name;
 
     @ForeignKey {
@@ -72,7 +82,6 @@ type Name record {
 
 // Many to Many
 type User4 record {
-    *Table;
     @PrimaryKey
     Name name;
 

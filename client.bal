@@ -17,6 +17,14 @@ public client class Client {
         return error Error("");
     }
 
+    # Insert the record entity value into the DB table with associations. Table details are fetched from the annotations
+    #
+    # + value - Entity value need to add to the DB
+    # + return - Metadata of the execution as an `ExecutionResult` or an `Error`
+    remote isolated function insertWithAssociation(record {} value) returns ExecutionResult|Error {
+        return error Error("");
+    }
+
     # Delete the record from the DB table, for the given condition. If the condition is not provided, all the records in the table will be deleted.
     #
     # + 'table - Ballerina record descriptor which mapped to the table.
@@ -41,8 +49,8 @@ public client class Client {
     # + condition - Condition for the query
     # + return - Stream of records in the `rowType` type
     remote isolated function get(typedesc<record {}> rowType = <>, *Condition condition) returns stream<rowType, Error?> = @java:Method {
-        'class: "",
-        name: ""
+        'class: "io.ballerina.stdlib.sql.utils.RecordIteratorUtils"
+
     } external;
 
     # query the table mapped to the Ballerina record and return with associations. If no condition is provided, all rows are fetched.
@@ -51,8 +59,8 @@ public client class Client {
     # + condition - Condition for the query
     # + return - Stream of records in the `rowType` type
     remote isolated function getWithAssociations(typedesc<record {}> rowType = <>, *Condition condition) returns stream<rowType, Error?> = @java:Method {
-        'class: "",
-        name: ""
+        'class: "io.ballerina.stdlib.sql.utils.RecordIteratorUtils"
+
     } external;
 
     # query the table mapped to the Ballerina record and return one record.
@@ -61,8 +69,16 @@ public client class Client {
     # + condition - Condition for the query
     # + return - Result in the `returnType` type or an `sql:Error`
     remote isolated function getRecord(typedesc<record {}> rowType = <>, *Condition condition) returns rowType|Error = @java:Method {
-        'class: "",
-        name: ""
+        'class: "io.ballerina.stdlib.sql.utils.RecordIteratorUtils"
+    } external;
+
+    # query the table mapped to the Ballerina record and return one record.
+    #
+    # + rowType - The `typedesc` of the record to which the result needs to be returned.
+    # + condition - Condition
+    # + return - Result in the `returnType` type or an `sql:Error`
+    remote isolated function getRecordWithAssociation(typedesc<record {}> rowType = <>, *Condition condition) returns rowType|Error = @java:Method {
+        'class: "io.ballerina.stdlib.sql.utils.RecordIteratorUtils"
     } external;
 
     // Closes the connection and shuts down the connection pool.

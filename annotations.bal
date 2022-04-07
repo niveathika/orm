@@ -159,23 +159,3 @@ public type ForeignKeyConfig record {|
 |};
 
 public annotation ForeignKeyConfig ForeignKey on record field;
-
-// TODO
-type Table record {|
-    @PrimaryKey
-    @Unique
-    @AutoIncrement
-    int id = -1;
-
-    time:Utc created_at;
-    time:Utc last_modified_at;
-
-    // This is used for soft delete functionality. To preserve data in order to recover 
-    // if needed
-    time:Utc? deleted_at;
-|};
-
-type User2 record {|
-    *Table;
-    string name;
-|};

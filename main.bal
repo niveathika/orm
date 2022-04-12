@@ -31,7 +31,7 @@ import ballerina/sql;
     Client db = check new ();
     sql:ExecutionResult result = check db->insert(user);
 
-    User1 userqweqew = check db->getRecord(User1, {"age": 3});
+    User1 user1 = check db->getRecord(User1, {"age": 3});
 
     Condition condition = {
         "id":1,
